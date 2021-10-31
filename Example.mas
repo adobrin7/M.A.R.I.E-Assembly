@@ -1,0 +1,63 @@
+ORG 100
+
+/* Resieving data */
+
+Input / Input a value from the keyboard into AC
+Store X / Store the contents of AC at address X
+Store Capacity / Store the contents of AC at address Capacity
+
+Input
+Store Y
+Store Accum
+
+/* Multiplation loop */
+
+loopM, Load ResM / loopM mark, Load the contents of address ResM into AC
+  Add X / Add the contents of address X to AC
+  Store ResM
+  Load Accum
+  Subt One / Subtract the contents of address One from the AC
+  Store Accum
+  Skipcond 400 / Skip the next instruction if the AC = 0
+  Jump loopM / Set next instruction adress to loopM adress
+
+/* Division loop */
+
+loopD, Load Capacity
+  Subt Y
+  Store Capacity
+  Load ResD
+  Add One
+  Store ResD
+  Load Capacity
+  Skipcond 400
+  Jump loopD
+
+/* intermediate results */
+
+Load ResM
+Output / Output the value in AC to the display (multiplation result)
+Load ResD
+Output / Output the value in AC to the display (division result)
+
+/* Final result */
+
+Load ResM
+Subt ResD
+Output / Output the value in AC to the display (subtraction result)
+
+Halt / Trminate program
+
+/* Variables initialization */
+
+X, Dec 0 / X has starting value, not given in problem
+Y, Dec 0 / Y has starting value, not given in problem
+One, Dec 1 / Use as a constant
+
+Accum, Dec 0 / Service variable for multiply calculations
+Capacity, Dec 0 / Service variable for division calculations
+
+ResD, Dec 0 / Division result
+ResM, Dec 0 / Multiply result
+
+END
